@@ -1,130 +1,135 @@
+
 # Proyecto Integrador: CRUD con Node.js y MySQL
 
-## Descripción del Proyecto
+Este proyecto es una API RESTful creada con Node.js, Express y Sequelize. Permite la gestión de datos de la DB "trailerflix", incluyendo operaciones CRUD (Crear, Leer, Actualizar, y Eliminar) sobre entidades como actores, contenidos, géneros y categorías.
 
-En este proyecto, desarrollarás una plataforma de streaming usando Node.js y MySQL. La aplicación permitirá realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre una base de datos relacional, utilizando el archivo trailerflix.json como referencia para diseñar el modelo de datos.
 
-## Entrega
-Esta entrega se enfocará en diseñar y crear la base de datos para una plataforma de streaming, usando MySQL y Node.js, junto con su respectiva documentación.
+## Estructura del proyecto
 
-Aprovecha lo visto en las clases para comenzar a diseñar las tablas y relaciones necesarias, las cuales deberán estar basadas en las propiedades del archivo trailerflix.json.
-
-## Dataset Proporcionados
-
-- **trailerflix.json**: Contiene información detallada sobre contenido de la plataforma, como películas y series. Deberás utilizar este archivo como base para diseñar el modelo de datos.
-
-## Modelo de Base de Datos
-El archivo trailerflix.json incluye propiedades como ID, título, categorías, géneros, resumen, temporadas, reparto y enlaces a trailers. Basado en esta estructura, debes diseñar una base de datos llamada trailerflix con al menos 6 tablas relacionales. Entre ellas:
-
-- **contenido**: Tabla principal con la información de películas y series.
-- **categorías**: Definirá si el contenido es una película o una serie.
-- **géneros**: Almacenará los géneros como Ciencia Ficción, Fantasía, etc.
-- **actores**: Información sobre los actores principales de cada contenido.
-- **tabla intermedia contenido-actores**: Relacionará el contenido con los actores.
-El diseño debe ser bocetado primero en papel y luego implementado en la plataforma **DB Designer** sugerida en clase. Debes generar un archivo SQL de exportación que podrás usar para crear las tablas en MySQL.
-
-## Pasos a Seguir
-1. **Diseñar el modelo de datos** basado en trailerflix.json.
-2. **Implementar las tablas** en DB Designer, asegurando que haya relaciones adecuadas entre ellas.
-3. **Generar el archivo SQL** para crear las tablas en MySQL.
-4. **Migrar los datos** del archivo JSON a MySQL utilizando los insert correspondientes.
-
-## Funcionalidades del CRUD
-
-1. **Obtener todos los contenidos**
-   - Endpoint que devuelve todos los contenidos de la base de datos.
-   - Control de errores para manejar la indisponibilidad de la base de datos.
-
-2. **Obtener un contenido por ID**
-   - Endpoint para obtener un contenido específico.
-   - Control de errores para manejar casos en que el contenido no exista.
-
-3. **Filtrar contenidos**
-   - Endpoint para filtrar por título, género o categoría.
-   - Control de errores para manejar coincidencias no encontradas o problemas de conexión.
-
-4. **Agregar un nuevo contenido**
-   - Endpoint para agregar una nueva pelicula o serie a la base de datos.
-   - Validación de campos obligatorios.
-
-5. **Actualizar un contenido:**
-   - Endpoint para actualizar información como temporadas o reparto.
-   - Control de errores para manejar actualizaciones fallidas.
-     
-6. **Eliminar un contenido**
-   - Endpoint para eliminar un contenido de la base de datos.
-   - Control de errores para manejar problemas durante el borrado.
-
-7. **Control de errores**
-   - Manejo de errores en la estructura de las solicitudes y respuestas.
-   - Respuesta adecuada con mensajes y códigos de error específicos.
-   - Control de acceso a rutas no existentes con respuestas apropiadas.
-  
-## Herramientas Sugeridas
-Utiliza una **I.A.** como sugerimos en clase para optimizar la inserción de los datos del JSON a la base de datos. Esto puede ayudarte a transformar el archivo *trailerflix.json* en un formato que sea más fácil de insertar en MySQL.
-
-## Fechas Importantes
-
-- **Avance del Proyecto**: 10 de octubre de 2024
-  - Tener diseñadas las tablas en DB Designer, con el archivo SQL generado y los primeros endpoints funcionando.
-
-- **Presentación Final**: 24 de octubre de 2024
-  - Proyecto completo con CRUD y toda la documentación.
-
-## Estructura del Repositorio
-
-```plaintext
-/controllers
-  - contenidoController.js
 /json
   - trailerflix.json
-/README.md
-/app.js
-/conexion/
+/config/
   - database.js
 /models/
   - contenido.js
   - categoria.js
+  - Contenido_actores.js
   - genero.js
   - actor.js
 /routes/
-  - contenidoRoutes.js
-```
+  - contenido.Routes.js
+  - actores.Routes.js
+  - filtrar.Routes.js
+  - id.Routes.js
+/README.md
+/app.js
+/api.http
 
-### Descripción de Archivos
+-----------------------------------------------------------------------------------
+- app.js: archivo principal que inicia el servidor y define las rutas de la API.
+- config/database.js: configura la conexión a la base de datos usando Sequelize.
+- models/: contiene los modelos Actor, Contenido, Contenido_actores, Categorias y Generos.
+- routes/: contiene los endpoints del CRUD y los exporta
+- api.http: archivo de prueba de los endpoints
 
-- **/json**: Contiene el archivo trailerflix.json con los datos de películas y series.
-- **/README.md**: Este archivo, con la descripción del proyecto.
-- **/app.js**: Archivo principal de la aplicación Node.js.
-- **/conexion/database.js**: Configuración de la conexión a MySQL.
-- **/models/**: Modelos de datos para las tablas en MySQL.
-- **/routes/**: Definición de las rutas y endpoints del CRUD.
 
-## Instrucciones de Entrega
+## Tecnologias utilizadas
 
-1. **Fork** el repositorio desde [aquí](https://github.com/FabioDrizZt/Trabajo-Integrador-Relacional-Backend-Diplomatura-UNTREF/fork).
-2. **Clona** tu fork en tu máquina local.
-   ```bash
-   git clone https://github.com/tu-usuario/tu-repositorio-fork.git
-   ```
-3. Realiza los cambios y sube tu código a tu fork.
-4. **Sube** los cambios a tu fork.
-   ```bash
-   git add .
-   git commit -m "Descripción de los cambios"
-   git push origin main
-   ```
+**libreria:** bodyparser
 
-5. Agrega a los siguientes usuarios como colaboradores en tu repositorio:
-   - [FabioDrizZt](https://github.com/FabioDrizZt)
-   - [JuanNebbia](https://github.com/JuanNebbia)
-   - [NKrein](https://github.com/NKrein)
-   - [mathiasbarbosa](https://github.com/mathiasbarbosa)
+**orm:** sequelize
 
-## Conclusión
+**framework:** express
 
-Este proyecto te permitirá aplicar conceptos clave de desarrollo backend, diseño de bases de datos y documentación. ¡Adelanta los pasos y recuerda mantener tu código limpio y bien documentado!
+**Server:** MySQL
 
----
+**entorno:** node.js
 
-Recuerda mantener tu código limpio, documentado y seguir las buenas prácticas de desarrollo. ¡Nos vemos en clase para revisar tu progreso el 10 de octubre de 2024!
+
+## Variables de entorno
+
+"Para ejecutar este proyecto, deberá agregar las siguientes variables de entorno a su archivo .env"
+
+`DB_USER:` Especifica el usuario de la base de datos
+
+`DB_PASSWORD:` La contraseña del usuario de la base de datos
+
+`DB_NAME:` El nombre de la base de datos que estás usando
+
+`DB_HOST:` La dirección del servidor de la base de datos
+
+`DB_DIALECT:` Especifica el tipo de base de datos que estás usando con Sequelize
+
+
+## Endpoints de la API
+
+**GET /** - Ruta raíz de prueba
+
+Descripción: Devuelve un mensaje de saludo (¡Hola mundo!), para verificar que el servidor esté en funcionamiento.
+Respuesta: "¡Hola mundo!"
+
+----------------------------------------------------------------
+**GET /actors** - Obtener todos los actores
+
+Descripción: Recupera todos los registros de actores en la base de datos.
+Respuesta en caso de éxito: Lista de actores en formato JSON.
+Respuesta en caso de error: { error: 'No se pudieron traer los actores' }
+
+----------------------------------------------------------------
+**GET /contenido** - Obtener todo el contenido
+
+Descripción: Recupera todos los registros de contenido en la base de datos.
+Respuesta en caso de éxito: Lista de contenido en formato JSON.
+Respuesta en caso de error: { error: 'No se pudo traer el contenido' }
+
+----------------------------------------------------------------
+**POST /contenido**- Crear nuevo contenido
+
+Descripción: Crea un nuevo registro de contenido en la base de datos. Si no existen la categoría o el género especificados, los crea.
+Requiere: Datos del contenido (por ejemplo, poster, trailer_url, resumen, duracion, genero, titulo, etc.) en el cuerpo de la solicitud.
+Respuesta en caso de éxito: JSON del contenido creado.
+Respuesta en caso de error: { error: 'No se pudo crear el contenido' }
+
+----------------------------------------------------------------
+**PUT /actualizar/:id** - Actualizar contenido
+
+Descripción: Actualiza un registro de contenido específico por su id.
+Requiere: ID del contenido a actualizar en la URL y los nuevos datos en el cuerpo de la solicitud.
+Respuesta en caso de éxito: JSON del contenido actualizado.
+Respuesta en caso de error: { error: 'No se pudo actualizar el contenido' }
+
+----------------------------------------------------------------
+**POST /actors** - Crear un nuevo actor
+
+Descripción: Crea un nuevo registro de actor en la base de datos.
+Requiere: Nombre y apellido del actor en el cuerpo de la solicitud.
+Respuesta en caso de éxito: JSON del actor creado.
+Respuesta en caso de error: { error: 'No se pudo crear el actor' }
+
+----------------------------------------------------------------
+**GET /contenido/buscar/** - Buscar contenido por filtros de categoría, género o título
+
+Descripción: Filtra y devuelve contenido en base a un criterio específico: categoría, género o título. Recibe estos filtros como parámetros de consulta (?categoria=, ?genero=, ?titulo=).
+Respuesta en caso de éxito: JSON del contenido filtrado.
+Respuesta en caso de error: { error: 'No se encontró ese filtro' } o { error: 'No se encontró el contenido' }
+
+----------------------------------------------------------------
+**GET /contenido/:id** - Obtener contenido por ID
+
+Descripción: Devuelve un contenido específico por su id.
+Requiere: ID del contenido en la URL.
+Respuesta en caso de éxito: JSON del contenido.
+Respuesta en caso de error: { error: 'No se encontró el contenido' }
+
+----------------------------------------------------------------
+**DELETE /eliminar/:id** - Eliminar contenido por ID
+
+Descripción: Elimina un registro de contenido específico por su id.
+Requiere: ID del contenido en la URL.
+Respuesta en caso de éxito: Mensaje de confirmación "Contenido eliminado con éxito".
+Respuesta en caso de error: { error: 'No se pudo eliminar el contenido' }
+
+
+## Requisitos previos
+Node.js: Descargar Node.js (versión recomendada: 18 o superior)
+MySQL: Configura un servidor MySQL local
