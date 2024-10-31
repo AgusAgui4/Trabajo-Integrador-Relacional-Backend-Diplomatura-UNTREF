@@ -6,24 +6,25 @@ Este proyecto es una API RESTful creada con Node.js, Express y Sequelize. Permit
 
 ## Estructura del proyecto
 
+```plaintext
 /json
   - trailerflix.json
 /config/
   - database.js
 /models/
-  - contenido.js
-  - categoria.js
+  - Actor.js
+  - Categorias.js
+  - Generos.js
   - Contenido_actores.js
-  - genero.js
-  - actor.js
+  - Contenido.js
 /routes/
-  - contenido.Routes.js
-  - actores.Routes.js
-  - filtrar.Routes.js
-  - id.Routes.js
+  - contenido.routes.js
+  - actores.routes.js
+  - filtrar.routes.js
+  - id.routes.js
 /README.md
 /app.js
-/api.http
+```
 
 -----------------------------------------------------------------------------------
 - app.js: archivo principal que inicia el servidor y define las rutas de la API.
