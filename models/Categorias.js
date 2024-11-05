@@ -1,3 +1,19 @@
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Categoria:
+ *       type: object
+ *       properties:
+ *         id_categoria:
+ *           type: integer
+ *           description: ID único de la categoría.
+ *           example: 1
+ *         nombre_categoria:
+ *           type: string
+ *           description: Nombre de la categoría.
+ *           example: "Drama"
+ */
 const { DataTypes } = require('sequelize')
 const sequelize = require('../config/database')
 

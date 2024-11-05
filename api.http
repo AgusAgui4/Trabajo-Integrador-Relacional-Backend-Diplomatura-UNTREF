@@ -946,7 +946,7 @@ GET http://localhost:3000/contenido/5
 
 ###
 # filtrar por genero, categoria o titulo
-GET http://localhost:3000/contenido/buscar?categoria=serie
+GET http://localhost:3000/contenido/buscar?genero=accion
 
 
 

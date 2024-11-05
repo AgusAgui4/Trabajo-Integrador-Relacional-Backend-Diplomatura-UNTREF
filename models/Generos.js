@@ -1,3 +1,20 @@
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Genero:
+ *       type: object
+ *       properties:
+ *         id_genero:
+ *           type: integer
+ *           description: ID único del género.
+ *           example: 1
+ *         nombre_genero:
+ *           type: string
+ *           description: Nombre del género.
+ *           example: "Acción"
+ */
+
 const { DataTypes } = require('sequelize')
 const sequelize = require('../config/database')
 

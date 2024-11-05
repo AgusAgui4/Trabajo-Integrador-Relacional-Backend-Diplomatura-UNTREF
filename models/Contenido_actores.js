@@ -1,3 +1,23 @@
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Contenido_actores:
+ *       type: object
+ *       properties:
+ *         id_contenido_actores:
+ *           type: integer
+ *           description: ID único de la relación entre contenido y actor.
+ *           example: 1
+ *         id_contenido:
+ *           type: integer
+ *           description: ID del contenido asociado.
+ *           example: 101
+ *         id_actor:
+ *           type: integer
+ *           description: ID del actor asociado.
+ *           example: 202
+ */
 const { DataTypes } = require('sequelize')
 const sequelize = require('../config/database')
 
